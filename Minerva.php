@@ -25,7 +25,7 @@ if( !defined( 'MEDIAWIKI' ) )
 	die( -1 );
 
 /**
- * Inherit main code from SkinTemplate, set the CSS and template filter.
+ * Inherit main code from SkinTemplate, set up the CSS and template.
  * @ingroup Skins
  */
 class SkinMinerva extends SkinTemplate {
@@ -37,16 +37,15 @@ class SkinMinerva extends SkinTemplate {
 	 */
 	function setupSkinUserCss( OutputPage $out ) {
 		parent::setupSkinUserCss( $out );
-
+		// Add the ResourceLoader module to the page output
 		$out->addModuleStyles( 'skins.minerva' );
-
 	}
 }
 
 class MinervaTemplate extends BaseTemplate {
 
 	/**
-	 * Template filter callback for MonoBook skin.
+	 * Template filter callback for Minerva skin.
 	 * Takes an associative array of data set from a SkinTemplate-based
 	 * class, and a wrapper for MediaWiki's localization database, and
 	 * outputs a formatted page.
@@ -58,9 +57,7 @@ class MinervaTemplate extends BaseTemplate {
 		wfSuppressWarnings();
 
 		$this->html( 'headelement' ); // This probably includes the body tag
-?>
-
-	<h1 id="firstHeading" class="firstHeading" lang="<?php
+?><h1 id="firstHeading" class="firstHeading" lang="<?php
 		$this->data['pageLanguage'] = $this->getSkin()->getTitle()->getPageViewLanguage()->getCode();
 		$this->html( 'pageLanguage' );
 	?>"><span dir="auto"><?php $this->html('title') ?></span></h1>
