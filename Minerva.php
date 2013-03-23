@@ -24,6 +24,11 @@
 if( !defined( 'MEDIAWIKI' ) )
 	die( -1 );
 
+
+// load mustache template engine
+require 'mustache.php/src/Mustache/Autoloader.php';
+Mustache_Autoloader::register();
+
 /**
  * Inherit main code from SkinTemplate, set up the CSS and template.
  * @ingroup Skins
@@ -55,18 +60,16 @@ class MinervaTemplate extends BaseTemplate {
 	function execute() {
 		// Suppress warnings to prevent notices about missing indexes in $this->data
 		wfSuppressWarnings();
+		$localTemplateBasePath = dirname( __FILE__ );
+		$localPath = "{$localTemplateBasePath}/minerva/templates/main.html";
+		if ( file_exists( $localPath ) ) {
+			$template = file_get_contents( $localPath );
+		} else {
+			// FIXME: throw error
+		}
 
-		$this->html( 'headelement' ); // This probably includes the body tag
-?><h1 id="firstHeading" class="firstHeading" lang="<?php
-		$this->data['pageLanguage'] = $this->getSkin()->getTitle()->getPageViewLanguage()->getCode();
-		$this->html( 'pageLanguage' );
-	?>"><span dir="auto"><?php $this->html('title') ?></span></h1>
-		<!-- start content -->
-<?php $this->html('bodytext') ?>
-		<!-- end content -->
-<?php
-		echo Html::closeElement( 'body' );
-		echo Html::closeElement( 'html' );
+		$m = new Mustache_Engine;
+		echo $m->render( $template,  $this->data );
 		wfRestoreWarnings();
 	} // end of execute() method
 }
