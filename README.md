@@ -8,14 +8,6 @@ Installation
 
 To install in MediaWiki, add...
 ```php
-'SkinMinerva' => 'skins/Minerva.php',
+require_once("$IP/extensions/Minerva/Minerva.php");
 ```
-... to includes/AutoLoader.php. Then add...
-```php
-'skins.minerva' => array(
-	'styles' => array( 'minerva/main.css' => array( 'media' => 'screen' ) ),
-	'remoteBasePath' => $GLOBALS['wgStylePath'],
-	'localBasePath' => $GLOBALS['wgStyleDirectory'],
-),
-```
-... to resources/Resources.php.
+... to LocalSettings.php
