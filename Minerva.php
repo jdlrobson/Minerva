@@ -60,6 +60,11 @@ class MinervaTemplate extends BaseTemplate {
 	function execute() {
 		// Suppress warnings to prevent notices about missing indexes in $this->data
 		wfSuppressWarnings();
+		$this->render( $this->data );
+		wfRestoreWarnings();
+	} // end of execute() method
+
+	function render( $data ) {
 		$localTemplateBasePath = dirname( __FILE__ );
 		$localPath = "{$localTemplateBasePath}/minerva/templates/main.html";
 		if ( file_exists( $localPath ) ) {
@@ -69,9 +74,8 @@ class MinervaTemplate extends BaseTemplate {
 		}
 
 		$m = new Mustache_Engine;
-		echo $m->render( $template,  $this->data );
-		wfRestoreWarnings();
-	} // end of execute() method
+		echo $m->render( $template,  $data );
+	}
 }
 
 $cwd = dirname( __FILE__ );
