@@ -75,6 +75,14 @@ class MinervaTemplate extends BaseTemplate {
 }
 
 $cwd = dirname( __FILE__ );
+$wgExtensionCredits['skin'][] = array(
+	'path' => __FILE__,
+	'name' => 'Minerva',
+	'version' => 'X.X.X',
+	'author' => array(
+		// please don't add authors use git log to see who authored
+	),
+);
 // add skin to MediaWiki
 $wgAutoloadClasses['SkinMinerva'] = "$cwd/Minerva.php";
 $wgValidSkinNames['minerva'] = 'Minerva';
