@@ -1,0 +1,79 @@
+@import "variables.less";
+
+html {
+	font-size: 90%; /* default browser size is 16px (12pt - our @baseFontSize) */
+}
+
+@bodyLineHeight: ( @baseFontSize / 3 ) * 4; /* = 16pt */
+@headingLineHeight: 22pt;
+
+body {
+	font-family: @fontFamily;
+	font-size: @baseFontSize;
+	line-height: @bodyLineHeight;
+	color: #252525;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Georgia", serif;
+	margin-bottom: 9pt;
+	button {
+		height: @headingLineHeight;
+	}
+}
+
+h2, h3, h4, h5, h6 {
+	margin-top: @headingMarginTop;
+}
+
+p {
+	margin-bottom: 8pt;
+}
+
+ol,
+ul {
+	ol,
+	ul {
+		margin-left: 1em;
+	}
+}
+
+dl {
+	margin-left: 1em;
+}
+
+@2xBaseFontSize: ( @baseFontSize * 2 );
+h1 {
+	font-size: @baseFontSize * 1.833;
+	line-height: @headingLineHeight;
+	color: black;
+}
+
+h2 {
+	font-size: ( @baseFontSize / 2 ) * 3; /* 18pt */
+	line-height: @headingLineHeight;
+}
+
+h3 {
+	font-size: ( @baseFontSize / 6 ) * 7; /* 14pt */
+	line-height: @headingLineHeight;
+	font-weight: bold;
+	margin-bottom: 8pt;
+}
+
+h4 {
+	font-weight: bold;
+}
+
+sup {
+	vertical-align: super;
+}
+
+sub {
+	vertical-align: sub;
+}
+
+sub,
+sup {
+	font-size: ( 3 * @baseFontSize / 4 );
+}
